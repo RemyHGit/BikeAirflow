@@ -12,10 +12,11 @@ import getpass
 app = Flask(__name__)
 
 DB_USER = os.getenv("DB_USER")
-DB_PWD  = os.getenv("DB_PWD") 
+DB_PWD = os.getenv("DB_PWD")
 DB_NAME = os.getenv("DB_NAME")
 DB_HOST = os.getenv("DB_HOST")
 DB_PORT = int(os.getenv("DB_PORT"))
+
 
 def connexion():
     user = DB_USER
@@ -30,7 +31,7 @@ def connexion():
             password=pwd,
             db=db_name,
             port=DB_PORT,
-            charset='utf8mb4',
+            charset="utf8mb4",
             cursorclass=pymysql.cursors.DictCursor,
             connect_timeout=10,
         )
@@ -287,6 +288,36 @@ def get_user_pos(place: str):
         return None
 
 
+def get_nearest_station(lat: float, lon: float):
+    try:
+        conn = connexion()
+        cursor = conn.cursor()
+
+        # Haversine distance formula (in kilometers)
+        query = """
+        SELECT *,
+            (6371 * acos(
+                cos(radians(%s)) * cos(radians(lat)) *
+                cos(radians(lon) - radians(%s)) +
+                sin(radians(%s)) * sin(radians(lat))
+            )) AS distance_km
+        FROM velo
+        ORDER BY distance_km ASC
+        LIMIT 1; 
+        """
+
+        values = (lat, lon, lat)
+        cursor.execute(query, values)
+        results = cursor.fetchall()
+
+        conn.close()
+        return results
+
+    except pymysql.Error as e:
+        print("Error in connection:", e)
+        return []
+
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -326,27 +357,23 @@ def view():
     else:
         rows = get_all()
 
-    df = pd.DataFrame(rows, columns=[
-        "id","station_name","lon","lat","city","adresse",
-        "available_bikes","available_bike_stands","status","last_update"
-    ])
+    # using records avoiding column order issues.
+    df = pd.DataFrame.from_records(rows)
+    for col in [
+        "id",
+        "station_name",
+        "lon",
+        "lat",
+        "city",
+        "adresse",
+        "available_bikes",
+        "available_bike_stands",
+        "status",
+        "last_update",
+    ]:
+        if col not in df.columns:
+            df[col] = None
 
-    # build map
-    m = folium.Map(location=[user_lat, user_lon], zoom_start=12)
-    folium.Marker([user_lat, user_lon],
-                  tooltip=f"Votre position{f' ({user_city})' if user_city else ''}",
-                  icon=folium.Icon(color="blue")).add_to(m)
-
-    for _, row in df.dropna(subset=["lat","lon"]).iterrows():
-        folium.Marker(
-            [float(row["lat"]), float(row["lon"])],
-            tooltip=row["station_name"],
-            popup=(f"Vélos disponibles: {row['available_bikes']}"
-                   f"\nPlaces disponibles: {row['available_bike_stands']}"
-                   f"\nStatut: {row['status']}"),
-            icon=folium.Icon(color="green" if int(row["available_bikes"] or 0) > 0 else "red"),
-        ).add_to(m)
-        
     # treemaps
     os.makedirs("static/plots", exist_ok=True)
 
@@ -381,6 +408,70 @@ def view():
         )
         fig_status.update_traces(root_color="lightgrey")
         fig_status.write_html("static/plots/treemap_by_status.html", include_plotlyjs="cdn", full_html=True)
+
+
+    # folium map
+    m = folium.Map(location=[user_lat, user_lon], zoom_start=12)
+    folium.Marker(
+        [user_lat, user_lon],
+        tooltip=f"Votre position{f' ({user_city})' if user_city else ''}",
+        icon=folium.Icon(color="blue"),
+    ).add_to(m)
+
+    for _, row in df.dropna(subset=["lat", "lon"]).iterrows():
+        folium.Marker(
+            [float(row["lat"]), float(row["lon"])],
+            tooltip=row.get("station_name") or "Station",
+            popup=(
+                f"Vélos disponibles: {row.get('available_bikes')}"
+                f"\nPlaces disponibles: {row.get('available_bike_stands')}"
+                f"\nStatut: {row.get('status')}"
+            ),
+            icon=folium.Icon(
+                color="green" if int(row.get("available_bikes") or 0) > 0 else "red"
+            ),
+        ).add_to(m)
+
+    # getting nearest station and drawing route
+    end_lat = end_lon = None
+    nearest = get_nearest_station(user_lat, user_lon) or []
+    if nearest:
+        ns = nearest[0]
+        try:
+            end_lat = float(ns["lat"])
+            end_lon = float(ns["lon"])
+        except (KeyError, TypeError, ValueError):
+            end_lat = end_lon = None
+
+    if end_lat is not None and end_lon is not None:
+        from folium import Element
+
+        map_var = m.get_name()
+
+        routing_inject = Element(f"""
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {{
+    L.Routing.control({{
+        waypoints: [
+        L.latLng({user_lat}, {user_lon}),
+        L.latLng({end_lat}, {end_lon})
+        ],
+        router: L.Routing.osrmv1({{ serviceUrl: 'https://router.project-osrm.org/route/v1' }}),
+        lineOptions: {{ styles: [{{ color: 'red', weight: 5, opacity: 0.8 }}] }},
+        addWaypoints: false,
+        draggableWaypoints: false,
+        fitSelectedRoutes: true,
+        show: false,
+        createMarker: function() {{ return null; }}  // 👈 désactive les marqueurs auto
+    }}).addTo({map_var});
+    }});
+    </script>
+    """)
+    m.get_root().html.add_child(routing_inject)
+
 
     m.save("templates/map.html")
     return render_template("main.html")

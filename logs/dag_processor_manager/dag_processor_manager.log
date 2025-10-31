@@ -1,0 +1,169 @@
+[2025-10-31T13:41:22.238+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time 
+[2025-10-31T13:41:22.243+0000] {manager.py:484} INFO - Process each file at most once every 30 seconds
+[2025-10-31T13:41:22.248+0000] {manager.py:485} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2025-10-31T13:41:22.252+0000] {manager.py:821} INFO - Searching for files in /opt/airflow/dags
+[2025-10-31T13:41:22.337+0000] {manager.py:824} INFO - There are 1 files in /opt/airflow/dags
+[2025-10-31T13:41:22.625+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                               PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run      Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  ----------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py    174  0.09s             0           0                                                   0
+================================================================================
+[2025-10-31T13:41:52.911+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py                           1           0  0.64s           2025-10-31T13:41:23                      12
+================================================================================
+[2025-10-31T13:42:22.932+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py                           1           0  0.22s           2025-10-31T13:41:53                      12
+================================================================================
+[2025-10-31T13:42:53.030+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py                           1           0  0.15s           2025-10-31T13:42:23                      12
+================================================================================
+[2025-10-31T13:43:23.491+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py                           1           0  0.15s           2025-10-31T13:42:54                      12
+================================================================================
+[2025-10-31T13:43:53.836+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py                           1           0  0.17s           2025-10-31T13:43:24                      12
+================================================================================
+[2025-10-31T13:44:24.294+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py                           1           0  0.22s           2025-10-31T13:43:55                      12
+================================================================================
+[2025-10-31T13:44:53.072+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15
+[2025-10-31T13:45:16.840+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time 
+[2025-10-31T13:45:16.841+0000] {manager.py:484} INFO - Process each file at most once every 30 seconds
+[2025-10-31T13:45:16.842+0000] {manager.py:485} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2025-10-31T13:45:16.843+0000] {manager.py:821} INFO - Searching for files in /opt/airflow/dags
+[2025-10-31T13:45:16.873+0000] {manager.py:824} INFO - There are 1 files in /opt/airflow/dags
+[2025-10-31T13:45:17.024+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                               PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run      Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  ----------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py    174  0.05s             0           0                                                   0
+================================================================================
+[2025-10-31T13:45:47.362+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py                           1           0  0.44s           2025-10-31T13:45:17                      12
+================================================================================
+[2025-10-31T13:46:18.038+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                               PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py    211  0.01s             1           0  0.27s           2025-10-31T13:45:47                      12
+================================================================================
+[2025-10-31T13:46:48.331+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                               PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py    216  0.01s             1           0  0.19s           2025-10-31T13:46:18                      12
+================================================================================
+[2025-10-31T13:47:18.826+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                               PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py    234  0.00s             1           0  0.17s           2025-10-31T13:46:48                      12
+================================================================================
+[2025-10-31T13:47:43.283+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15
+[2025-10-31T13:48:24.995+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time 
+[2025-10-31T13:48:24.996+0000] {manager.py:484} INFO - Process each file at most once every 30 seconds
+[2025-10-31T13:48:24.997+0000] {manager.py:485} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2025-10-31T13:48:24.998+0000] {manager.py:821} INFO - Searching for files in /opt/airflow/dags
+[2025-10-31T13:48:25.033+0000] {manager.py:824} INFO - There are 1 files in /opt/airflow/dags
+[2025-10-31T13:48:25.200+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                               PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run      Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  ----------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py    174  0.06s             0           0                                                   0
+================================================================================
+[2025-10-31T13:48:55.506+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                               PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py    193  0.01s             1           0  0.33s           2025-10-31T13:48:25                      12
+================================================================================
+[2025-10-31T13:49:25.823+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                               PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py    211  0.01s             1           0  0.16s           2025-10-31T13:48:55                      12
+================================================================================
+[2025-10-31T13:49:56.244+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                               PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py    216  0.01s             1           0  0.17s           2025-10-31T13:49:25                      12
+================================================================================
+[2025-10-31T13:50:26.607+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                               PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py    234  0.01s             1           0  0.27s           2025-10-31T13:49:56                      12
+================================================================================
+[2025-10-31T13:50:56.995+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                               PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py    239  0.01s             1           0  0.18s           2025-10-31T13:50:26                      12
+================================================================================
+[2025-10-31T13:51:27.317+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                               PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/refresh_bike_db.py    257  0.01s             1           0  0.21s           2025-10-31T13:50:57                      12
+================================================================================

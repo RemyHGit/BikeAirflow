@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ee308466bb0a6ecf2f527d22fb861af4 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    L.Routing.control({
+        waypoints: [
+        L.latLng(50.6267445, 3.0801349),
+        L.latLng(50.62651, 3.079211)
+        ],
+        router: L.Routing.osrmv1({ serviceUrl: 'https://router.project-osrm.org/route/v1' }),
+        lineOptions: { styles: [{ color: 'red', weight: 5, opacity: 0.8 }] },
+        addWaypoints: false,
+        draggableWaypoints: false,
+        fitSelectedRoutes: true,
+        show: false,
+        createMarker: function() { return null; }  // 👈 désactive les marqueurs auto
+    }).addTo(map_ee308466bb0a6ecf2f527d22fb861af4);
+    });
+    </script>
+    
+    
+            <div class="folium-map" id="map_ee308466bb0a6ecf2f527d22fb861af4" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ee308466bb0a6ecf2f527d22fb861af4 = L.map(
+                "map_ee308466bb0a6ecf2f527d22fb861af4",
+                {
+                    center: [50.6267445, 3.0801349],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7e3a09c1bcc8da124d82eb79ed36bf61 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7e3a09c1bcc8da124d82eb79ed36bf61.addTo(map_ee308466bb0a6ecf2f527d22fb861af4);
+        
+    
+            var marker_bc8baf24c3a2c2943673a2286ef3f3d0 = L.marker(
+                [50.6267445, 3.0801349],
+                {
+}
+            ).addTo(map_ee308466bb0a6ecf2f527d22fb861af4);
+        
+    
+            var icon_29aaa69b44e6f71271155a1d3453bdfa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_bc8baf24c3a2c2943673a2286ef3f3d0.bindTooltip(
+                `<div>
+                     Votre position (Lille)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bc8baf24c3a2c2943673a2286ef3f3d0.setIcon(icon_29aaa69b44e6f71271155a1d3453bdfa);
+            
+    
+            var marker_2108cef63fc15ae2ded5052e52e32d4f = L.marker(
+                [50.62651, 3.079211],
+                {
+}
+            ).addTo(map_ee308466bb0a6ecf2f527d22fb861af4);
+        
+    
+            var icon_0839af6bbdb941873bbc03787eb71941 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f19dbf7001e2c4ccdecc5cf58501714a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cef903f21b8b4ecd71eef77a2254cfc7 = $(`<div id="html_cef903f21b8b4ecd71eef77a2254cfc7" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 4 Places disponibles: Oui Statut: EN SERVICE</div>`)[0];
+                popup_f19dbf7001e2c4ccdecc5cf58501714a.setContent(html_cef903f21b8b4ecd71eef77a2254cfc7);
+            
+        
+
+        marker_2108cef63fc15ae2ded5052e52e32d4f.bindPopup(popup_f19dbf7001e2c4ccdecc5cf58501714a)
+        ;
+
+        
+    
+    
+            marker_2108cef63fc15ae2ded5052e52e32d4f.bindTooltip(
+                `<div>
+                     BOIS HABITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2108cef63fc15ae2ded5052e52e32d4f.setIcon(icon_0839af6bbdb941873bbc03787eb71941);
+            
+    
+            var marker_0128ca0edb914810c7dbb5abc6fd732c = L.marker(
+                [50.62479, 3.080467],
+                {
+}
+            ).addTo(map_ee308466bb0a6ecf2f527d22fb861af4);
+        
+    
+            var icon_e42f22397f88182bc8f00e2ac1e1b8aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_06c92223599ad02c655ebe8ba48edd1a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d2297b8400a9b417d444c6635bfe9665 = $(`<div id="html_d2297b8400a9b417d444c6635bfe9665" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 15 Places disponibles: Oui Statut: EN SERVICE</div>`)[0];
+                popup_06c92223599ad02c655ebe8ba48edd1a.setContent(html_d2297b8400a9b417d444c6635bfe9665);
+            
+        
+
+        marker_0128ca0edb914810c7dbb5abc6fd732c.bindPopup(popup_06c92223599ad02c655ebe8ba48edd1a)
+        ;
+
+        
+    
+    
+            marker_0128ca0edb914810c7dbb5abc6fd732c.bindTooltip(
+                `<div>
+                     AUBERGE DE JEUNESSE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0128ca0edb914810c7dbb5abc6fd732c.setIcon(icon_e42f22397f88182bc8f00e2ac1e1b8aa);
+            
+    
+            var marker_e05cdcf7fe0feb4373841bb4e850c40b = L.marker(
+                [50.629738, 3.078224],
+                {
+}
+            ).addTo(map_ee308466bb0a6ecf2f527d22fb861af4);
+        
+    
+            var icon_0c758e46e3997c228ee1e0e45b943fb4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d890ebcf5e6ebc588f89f854d900d6de = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b37f10f69f0d015b4a11c7be638741fc = $(`<div id="html_b37f10f69f0d015b4a11c7be638741fc" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 16 Places disponibles: Oui Statut: EN SERVICE</div>`)[0];
+                popup_d890ebcf5e6ebc588f89f854d900d6de.setContent(html_b37f10f69f0d015b4a11c7be638741fc);
+            
+        
+
+        marker_e05cdcf7fe0feb4373841bb4e850c40b.bindPopup(popup_d890ebcf5e6ebc588f89f854d900d6de)
+        ;
+
+        
+    
+    
+            marker_e05cdcf7fe0feb4373841bb4e850c40b.bindTooltip(
+                `<div>
+                     HOTEL DE REGION
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e05cdcf7fe0feb4373841bb4e850c40b.setIcon(icon_0c758e46e3997c228ee1e0e45b943fb4);
+            
+    
+            var marker_83da272063606b08874254ec04eed5fe = L.marker(
+                [50.629246, 3.075218],
+                {
+}
+            ).addTo(map_ee308466bb0a6ecf2f527d22fb861af4);
+        
+    
+            var icon_8b68a2ef0a3ba0b4263de7a6ba9df91a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6fdeff7a49d564f6011f74bc986de05a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4759c174be0c4534a292c33dbf820617 = $(`<div id="html_4759c174be0c4534a292c33dbf820617" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 8 Places disponibles: Oui Statut: EN SERVICE</div>`)[0];
+                popup_6fdeff7a49d564f6011f74bc986de05a.setContent(html_4759c174be0c4534a292c33dbf820617);
+            
+        
+
+        marker_83da272063606b08874254ec04eed5fe.bindPopup(popup_6fdeff7a49d564f6011f74bc986de05a)
+        ;
+
+        
+    
+    
+            marker_83da272063606b08874254ec04eed5fe.bindTooltip(
+                `<div>
+                     LILLE GRAND PALAIS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_83da272063606b08874254ec04eed5fe.setIcon(icon_8b68a2ef0a3ba0b4263de7a6ba9df91a);
+            
+    
+            var marker_4ae9bcb83b5bc3db241bd6710c625c59 = L.marker(
+                [50.622223, 3.077127],
+                {
+}
+            ).addTo(map_ee308466bb0a6ecf2f527d22fb861af4);
+        
+    
+            var icon_f2f7a040010bc91001fc64412ba9a84f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7720c639e7190266a69747db592d338a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6a0a84b8aea742073b3056c4877bded3 = $(`<div id="html_6a0a84b8aea742073b3056c4877bded3" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 0 Places disponibles: Oui Statut: RÉFORMÉ</div>`)[0];
+                popup_7720c639e7190266a69747db592d338a.setContent(html_6a0a84b8aea742073b3056c4877bded3);
+            
+        
+
+        marker_4ae9bcb83b5bc3db241bd6710c625c59.bindPopup(popup_7720c639e7190266a69747db592d338a)
+        ;
+
+        
+    
+    
+            marker_4ae9bcb83b5bc3db241bd6710c625c59.bindTooltip(
+                `<div>
+                     BELFORT
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4ae9bcb83b5bc3db241bd6710c625c59.setIcon(icon_f2f7a040010bc91001fc64412ba9a84f);
+            
+    
+            var marker_34b25db7a2e7670149d402ab9818697b = L.marker(
+                [50.628918, 3.088147],
+                {
+}
+            ).addTo(map_ee308466bb0a6ecf2f527d22fb861af4);
+        
+    
+            var icon_0665fbbed3c64646d40359933470f31f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f82690cbcb039ac47b62691697c232dc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c15fc839c3eb37f4fd5c28fbfaaeb49a = $(`<div id="html_c15fc839c3eb37f4fd5c28fbfaaeb49a" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 9 Places disponibles: Oui Statut: EN SERVICE</div>`)[0];
+                popup_f82690cbcb039ac47b62691697c232dc.setContent(html_c15fc839c3eb37f4fd5c28fbfaaeb49a);
+            
+        
+
+        marker_34b25db7a2e7670149d402ab9818697b.bindPopup(popup_f82690cbcb039ac47b62691697c232dc)
+        ;
+
+        
+    
+    
+            marker_34b25db7a2e7670149d402ab9818697b.bindTooltip(
+                `<div>
+                     STADE BALLET
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_34b25db7a2e7670149d402ab9818697b.setIcon(icon_0665fbbed3c64646d40359933470f31f);
+            
+    
+            var marker_b6a5c32fd46b23f8ddb9c438e695d216 = L.marker(
+                [50.62073, 3.07895],
+                {
+}
+            ).addTo(map_ee308466bb0a6ecf2f527d22fb861af4);
+        
+    
+            var icon_5c0c88033800adb85b274ac57c592f4c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_29b3bbcf9c8fadbbd45fc66fa52ea1b1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3b4296e4fd9cc5b8f874c93a2d905302 = $(`<div id="html_3b4296e4fd9cc5b8f874c93a2d905302" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 12 Places disponibles: Oui Statut: EN SERVICE</div>`)[0];
+                popup_29b3bbcf9c8fadbbd45fc66fa52ea1b1.setContent(html_3b4296e4fd9cc5b8f874c93a2d905302);
+            
+        
+
+        marker_b6a5c32fd46b23f8ddb9c438e695d216.bindPopup(popup_29b3bbcf9c8fadbbd45fc66fa52ea1b1)
+        ;
+
+        
+    
+    
+            marker_b6a5c32fd46b23f8ddb9c438e695d216.bindTooltip(
+                `<div>
+                     PORTE DE VALENCIENNES
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b6a5c32fd46b23f8ddb9c438e695d216.setIcon(icon_5c0c88033800adb85b274ac57c592f4c);
+            
+    
+            var marker_913a182465770ab124cfd55e0029ee95 = L.marker(
+                [50.632965, 3.076437],
+                {
+}
+            ).addTo(map_ee308466bb0a6ecf2f527d22fb861af4);
+        
+    
+            var icon_c5515e1c23d0128924ae38877eeb5056 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cd91051682e10dd97863262ed18b6935 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_21ede67409d7a4aec184ff70a9fe503c = $(`<div id="html_21ede67409d7a4aec184ff70a9fe503c" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 23 Places disponibles: Oui Statut: EN SERVICE</div>`)[0];
+                popup_cd91051682e10dd97863262ed18b6935.setContent(html_21ede67409d7a4aec184ff70a9fe503c);
+            
+        
+
+        marker_913a182465770ab124cfd55e0029ee95.bindPopup(popup_cd91051682e10dd97863262ed18b6935)
+        ;
+
+        
+    
+    
+            marker_913a182465770ab124cfd55e0029ee95.bindTooltip(
+                `<div>
+                     ZENITH
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_913a182465770ab124cfd55e0029ee95.setIcon(icon_c5515e1c23d0128924ae38877eeb5056);
+            
+    
+            var marker_68857015b1718e2a0a56f1d9b71cd323 = L.marker(
+                [50.62816, 3.069797],
+                {
+}
+            ).addTo(map_ee308466bb0a6ecf2f527d22fb861af4);
+        
+    
+            var icon_85df01ce508117e183dfe60cd3c2ddd8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d725bd0b66dcd162418b16307e99c268 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6e9ca0ae56911f936ec4349ca78471dd = $(`<div id="html_6e9ca0ae56911f936ec4349ca78471dd" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 8 Places disponibles: Oui Statut: EN SERVICE</div>`)[0];
+                popup_d725bd0b66dcd162418b16307e99c268.setContent(html_6e9ca0ae56911f936ec4349ca78471dd);
+            
+        
+
+        marker_68857015b1718e2a0a56f1d9b71cd323.bindPopup(popup_d725bd0b66dcd162418b16307e99c268)
+        ;
+
+        
+    
+    
+            marker_68857015b1718e2a0a56f1d9b71cd323.bindTooltip(
+                `<div>
+                     BOULEVARD LOUIS XIV
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_68857015b1718e2a0a56f1d9b71cd323.setIcon(icon_85df01ce508117e183dfe60cd3c2ddd8);
+            
+</script>
+</html>
