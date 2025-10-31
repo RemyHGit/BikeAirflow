@@ -9,6 +9,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+plugins/static/plots/*
 logs/*
 develop-eggs/
 dist/

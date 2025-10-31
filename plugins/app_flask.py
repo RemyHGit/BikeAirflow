@@ -3,7 +3,7 @@ import os
 import pymysql
 import pandas as pd
 import folium
-import geopy.exc as geopyexceptions
+import plotly.express as px
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
 from geopy.exc import GeocoderTimedOut, GeocoderServiceError, GeocoderUnavailable
@@ -188,9 +188,6 @@ def get_all_from_city(city: str):
         print("Error in connection:", e)
 
 
-import pymysql
-
-
 def get_restricted_all_from_city(
     city: str, center_lat: float, center_lon: float, nb_stand: int
 ):
@@ -349,10 +346,44 @@ def view():
                    f"\nStatut: {row['status']}"),
             icon=folium.Icon(color="green" if int(row["available_bikes"] or 0) > 0 else "red"),
         ).add_to(m)
+        
+    # treemaps
+    os.makedirs("static/plots", exist_ok=True)
+
+    df_tm = df.dropna(subset=["city"]).copy()
+
+    df_tm["available_bikes"] = pd.to_numeric(df_tm["available_bikes"], errors="coerce").fillna(0)
+
+    # treemap: City -> Station
+    if not df_tm.empty:
+        fig_city = px.treemap(
+            df_tm,
+            path=["city", "station_name"],
+            values="available_bikes",
+            hover_data=["available_bike_stands", "status"],
+            title="Disponibilité des vélos par Ville → Station (taille = vélos disponibles)",
+        )
+        fig_city.update_traces(root_color="lightgrey")
+        fig_city.write_html("static/plots/treemap_by_city.html", include_plotlyjs="cdn", full_html=True)
+
+    if not df_tm.empty:
+        # group to count stations per (city, status)
+        grouped = (
+            df_tm.groupby(["city", "status"], dropna=False)
+                .size()
+                .reset_index(name="stations")
+        )
+        fig_status = px.treemap(
+            grouped,
+            path=["city", "status"],
+            values="stations",
+            title="Nombre de stations par Ville → Statut (taille = nb stations)",
+        )
+        fig_status.update_traces(root_color="lightgrey")
+        fig_status.write_html("static/plots/treemap_by_status.html", include_plotlyjs="cdn", full_html=True)
 
     m.save("templates/map.html")
     return render_template("main.html")
-
 
 
 @app.route("/map", methods=["GET"])

@@ -2,9 +2,6 @@ import os
 import pymysql
 import pandas as pd
 import requests
-
-import os
-import pymysql
 import getpass
 
 DB_USER = os.getenv("DB_USER")

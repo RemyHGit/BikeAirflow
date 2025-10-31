@@ -5,3 +5,4 @@ folium
 geopy
 gunicorn
 flask-limiter
+plotly

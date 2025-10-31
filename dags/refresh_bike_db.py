@@ -7,9 +7,9 @@ from airflow.operators.bash import BashOperator
 default_args = {
     "owner": "airflow",
     "depends_on_past": False,
-    "start_date": datetime(2025, 1, 1),  # date de démarrage du DAG
+    "start_date": datetime(2025, 1, 1), 
     "retries": 1,
-    "retry_delay": timedelta(seconds=30),  # délai avant une nouvelle tentative
+    "retry_delay": timedelta(seconds=30),
 }
 
 # Définition du DAG
@@ -18,7 +18,7 @@ with DAG(
     default_args=default_args,
     description="Un DAG qui refresh la database des vélos chaque minute",
     schedule_interval="*/1 * * * *",  # chaque minute
-    catchup=False,                     # ne pas exécuter les tâches manquées
+    catchup=False,                     
 ) as dag:
 
     refresh_bike = BashOperator(

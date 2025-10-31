@@ -12,6 +12,21 @@
     <h1>🚲 Live Bike Map</h1>
 
     <iframe src="{{ url_for('map_page') }}"></iframe>
+    <h3>Treemap (Ville → Station)</h3>
+    <iframe
+      src="{{ url_for('static', filename='plots/treemap_by_city.html') }}"
+      width="100%"
+      height="520"
+      style="border: none"
+    ></iframe>
+
+    <h3>Treemap (Ville → Statut)</h3>
+    <iframe
+      src="{{ url_for('static', filename='plots/treemap_by_status.html') }}"
+      width="100%"
+      height="520"
+      style="border: none"
+    ></iframe>
 
     <footer>
       Données fournies par
