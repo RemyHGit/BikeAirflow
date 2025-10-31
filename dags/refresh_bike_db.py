@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from airflow.operators.bash import BashOperator
 
 
-# Configuration de base du DAG
+# DAG default arguments
 default_args = {
     "owner": "airflow",
     "depends_on_past": False,
@@ -12,12 +12,12 @@ default_args = {
     "retry_delay": timedelta(seconds=30),
 }
 
-# Définition du DAG
+# DAG definition
 with DAG(
     dag_id="refresh_bike_db",
     default_args=default_args,
     description="Un DAG qui refresh la database des vélos chaque minute",
-    schedule_interval="*/1 * * * *",  # chaque minute
+    schedule_interval="*/1 * * * *",  # every minute
     catchup=False,                     
 ) as dag:
 

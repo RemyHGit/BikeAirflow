@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 import os
+import time
 import pymysql
 import pandas as pd
 import folium
@@ -181,12 +182,13 @@ def get_all_from_city(city: str):
     try:
         conn = connexion()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM velo WHERE city = %s", (city))
+        cursor.execute("SELECT * FROM velo WHERE city = %s", (city,))
         results = cursor.fetchall()
         conn.close()
         return results
     except pymysql.Error as e:
         print("Error in connection:", e)
+        return []
 
 
 def get_restricted_all_from_city(
@@ -337,6 +339,7 @@ def view():
         # geocode
         pos = get_user_pos(addr_text) if addr_text else None
         if pos:
+            print(pos)
             user_lat = pos["latitude"]
             user_lon = pos["longitude"]
             user_city = pos["city"]
@@ -379,7 +382,9 @@ def view():
 
     df_tm = df.dropna(subset=["city"]).copy()
 
-    df_tm["available_bikes"] = pd.to_numeric(df_tm["available_bikes"], errors="coerce").fillna(0)
+    df_tm["available_bikes"] = pd.to_numeric(
+        df_tm["available_bikes"], errors="coerce"
+    ).fillna(0)
 
     # treemap: City -> Station
     if not df_tm.empty:
@@ -391,14 +396,16 @@ def view():
             title="Disponibilité des vélos par Ville → Station (taille = vélos disponibles)",
         )
         fig_city.update_traces(root_color="lightgrey")
-        fig_city.write_html("static/plots/treemap_by_city.html", include_plotlyjs="cdn", full_html=True)
+        fig_city.write_html(
+            "static/plots/treemap_by_city.html", include_plotlyjs="cdn", full_html=True
+        )
 
     if not df_tm.empty:
         # group to count stations per (city, status)
         grouped = (
             df_tm.groupby(["city", "status"], dropna=False)
-                .size()
-                .reset_index(name="stations")
+            .size()
+            .reset_index(name="stations")
         )
         fig_status = px.treemap(
             grouped,
@@ -407,8 +414,11 @@ def view():
             title="Nombre de stations par Ville → Statut (taille = nb stations)",
         )
         fig_status.update_traces(root_color="lightgrey")
-        fig_status.write_html("static/plots/treemap_by_status.html", include_plotlyjs="cdn", full_html=True)
-
+        fig_status.write_html(
+            "static/plots/treemap_by_status.html",
+            include_plotlyjs="cdn",
+            full_html=True,
+        )
 
     # folium map
     m = folium.Map(location=[user_lat, user_lon], zoom_start=12)
@@ -418,7 +428,7 @@ def view():
         icon=folium.Icon(color="blue"),
     ).add_to(m)
 
-    for _, row in df.dropna(subset=["lat", "lon"]).iterrows():
+    for _, row in df.iterrows():
         folium.Marker(
             [float(row["lat"]), float(row["lon"])],
             tooltip=row.get("station_name") or "Station",
@@ -448,7 +458,8 @@ def view():
 
         map_var = m.get_name()
 
-        routing_inject = Element(f"""
+        routing_inject = Element(
+            f"""
     <link rel="stylesheet"
         href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
@@ -469,17 +480,13 @@ def view():
     }}).addTo({map_var});
     }});
     </script>
-    """)
+    """
+        )
     m.get_root().html.add_child(routing_inject)
 
-
-    m.save("templates/map.html")
+    os.makedirs("static", exist_ok=True)
+    m.save("static/map.html")
     return render_template("main.html")
-
-
-@app.route("/map", methods=["GET"])
-def map_page():
-    return render_template("map.html")
 
 
 if __name__ == "__main__":

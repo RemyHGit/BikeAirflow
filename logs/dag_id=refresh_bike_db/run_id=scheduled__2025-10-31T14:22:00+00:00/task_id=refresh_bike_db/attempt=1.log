@@ -1,0 +1,29 @@
+[2025-10-31T14:23:01.348+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-31T14:23:01.369+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: refresh_bike_db.refresh_bike_db scheduled__2025-10-31T14:22:00+00:00 [queued]>
+[2025-10-31T14:23:01.381+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: refresh_bike_db.refresh_bike_db scheduled__2025-10-31T14:22:00+00:00 [queued]>
+[2025-10-31T14:23:01.383+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-10-31T14:23:01.401+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): refresh_bike_db> on 2025-10-31 14:22:00+00:00
+[2025-10-31T14:23:01.414+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'refresh_bike_db', 'refresh_bike_db', 'scheduled__2025-10-31T14:22:00+00:00', '--job-id', '561', '--raw', '--subdir', 'DAGS_FOLDER/refresh_bike_db.py', '--cfg-path', '/tmp/tmpgi22e5ww']
+[2025-10-31T14:23:01.417+0000] {standard_task_runner.py:105} INFO - Job 561: Subtask refresh_bike_db
+[2025-10-31T14:23:01.419+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=975) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-10-31T14:23:01.421+0000] {standard_task_runner.py:72} INFO - Started process 976 to run task
+[2025-10-31T14:23:01.491+0000] {task_command.py:467} INFO - Running <TaskInstance: refresh_bike_db.refresh_bike_db scheduled__2025-10-31T14:22:00+00:00 [running]> on host 94513e024ddd
+[2025-10-31T14:23:01.612+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='refresh_bike_db' AIRFLOW_CTX_TASK_ID='refresh_bike_db' AIRFLOW_CTX_EXECUTION_DATE='2025-10-31T14:22:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-10-31T14:22:00+00:00'
+[2025-10-31T14:23:01.614+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-10-31T14:23:01.633+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-10-31T14:23:01.636+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n          set -euxo pipefail\n          cd "$AIRFLOW_HOME/plugins"\n          python gather_bike_data.py\n        ']
+[2025-10-31T14:23:01.651+0000] {subprocess.py:86} INFO - Output:
+[2025-10-31T14:23:01.652+0000] {subprocess.py:93} INFO - + cd /opt/***/plugins
+[2025-10-31T14:23:01.653+0000] {subprocess.py:93} INFO - + python gather_bike_data.py
+[2025-10-31T14:23:10.932+0000] {subprocess.py:93} INFO - Fetching data of Lille's api: 302
+[2025-10-31T14:23:10.936+0000] {subprocess.py:93} INFO - Fetching data of Paris's api: 1495
+[2025-10-31T14:23:10.937+0000] {subprocess.py:93} INFO - 
+[2025-10-31T14:23:10.937+0000] {subprocess.py:93} INFO - 
+[2025-10-31T14:23:10.938+0000] {subprocess.py:93} INFO - ✅ Connected successfully to MySQL!
+[2025-10-31T14:23:10.938+0000] {subprocess.py:93} INFO - ✅ Connected successfully to MySQL!
+[2025-10-31T14:23:11.055+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-10-31T14:23:11.074+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-10-31T14:23:11.078+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=refresh_bike_db, task_id=refresh_bike_db, run_id=scheduled__2025-10-31T14:22:00+00:00, execution_date=20251031T142200, start_date=20251031T142301, end_date=20251031T142311
+[2025-10-31T14:23:11.141+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-31T14:23:11.165+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-31T14:23:11.170+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

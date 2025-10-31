@@ -11,7 +11,14 @@
   <body>
     <h1>🚲 Live Bike Map</h1>
 
-    <iframe src="{{ url_for('map_page') }}"></iframe>
+    <iframe
+      src="{{ url_for('static', filename='map.html') }}?v={{ range(1_000_000)|random }}"
+      width="100%"
+      height="700"
+      style="border: none"
+    >
+    </iframe>
+
     <h3>Treemap (Ville → Station)</h3>
     <iframe
       src="{{ url_for('static', filename='plots/treemap_by_city.html') }}"
