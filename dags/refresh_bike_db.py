@@ -1,6 +1,7 @@
 from airflow import DAG
-from airflow.operators.bash import BashOperator
 from datetime import datetime, timedelta
+from airflow.operators.bash import BashOperator
+
 
 # Configuration de base du DAG
 default_args = {
@@ -20,16 +21,14 @@ with DAG(
     catchup=False,                     # ne pas exécuter les tâches manquées
 ) as dag:
 
-    # Tâche 1 : Exécution d’une commande simple
     refresh_bike = BashOperator(
         task_id="refresh_bike_db",
-        bash_command="python $AIRFLOW_HOME/plugins/test2.py"
-        
+        bash_command=r"""
+          set -euxo pipefail
+          cd "$AIRFLOW_HOME/plugins"
+          python gather_bike_data.py
+        """,         
+        do_xcom_push=False,
     )
 
-    # Tu peux ajouter d'autres tâches ici (PythonOperator, etc.)
-    refresh_bike
-
-
-
-
+    refresh_bike 

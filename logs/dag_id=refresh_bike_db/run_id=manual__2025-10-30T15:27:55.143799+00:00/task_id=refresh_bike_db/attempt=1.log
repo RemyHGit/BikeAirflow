@@ -1,0 +1,58 @@
+[2025-10-30T15:27:56.632+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-30T15:27:56.660+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: refresh_bike_db.refresh_bike_db manual__2025-10-30T15:27:55.143799+00:00 [queued]>
+[2025-10-30T15:27:56.676+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: refresh_bike_db.refresh_bike_db manual__2025-10-30T15:27:55.143799+00:00 [queued]>
+[2025-10-30T15:27:56.678+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-10-30T15:27:56.695+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): refresh_bike_db> on 2025-10-30 15:27:55.143799+00:00
+[2025-10-30T15:27:56.705+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=3054) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-10-30T15:27:56.707+0000] {standard_task_runner.py:72} INFO - Started process 3055 to run task
+[2025-10-30T15:27:56.705+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'refresh_bike_db', 'refresh_bike_db', 'manual__2025-10-30T15:27:55.143799+00:00', '--job-id', '253', '--raw', '--subdir', 'DAGS_FOLDER/refresh_bike_db.py', '--cfg-path', '/tmp/tmpt526g72q']
+[2025-10-30T15:27:56.708+0000] {standard_task_runner.py:105} INFO - Job 253: Subtask refresh_bike_db
+[2025-10-30T15:27:56.730+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-10-30T15:27:56.784+0000] {task_command.py:467} INFO - Running <TaskInstance: refresh_bike_db.refresh_bike_db manual__2025-10-30T15:27:55.143799+00:00 [running]> on host 8e61f8c083ab
+[2025-10-30T15:27:56.918+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='refresh_bike_db' AIRFLOW_CTX_TASK_ID='refresh_bike_db' AIRFLOW_CTX_EXECUTION_DATE='2025-10-30T15:27:55.143799+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-30T15:27:55.143799+00:00'
+[2025-10-30T15:27:56.919+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-10-30T15:27:56.941+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-10-30T15:27:56.944+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n            set -exo pipefail\n            echo "PWD=$(pwd)"\n            echo "AIRFLOW_HOME=${AIRFLOW_HOME:-<unset>}"\n            python --version\n            which python\n            ls -lah "$AIRFLOW_HOME/plugins" || true\n\n            echo "DB env:"\n            echo "DB_HOST=${DB_HOST:-<unset>}"\n            echo "DB_PORT=${DB_PORT:-<unset>}"\n            echo "DB_USER=${DB_USER:-<unset>}"\n            echo "DB_NAME=${DB_NAME:-<unset>}"\n            if [ -z "${DB_PWD+x}" ]; then echo "DB_PWD=<unset>"; else echo "DB_PWD=<set>"; fi\n\n            cd "$AIRFLOW_HOME/plugins"\n\n            # Optionnel : self-test verbeux dans ton script (si tu l\'as ajouté)\n            # python gather_bike_data.py --self-test --verbose\n\n            # Exécution réelle\n            python gather_bike_data.py\n        ']
+[2025-10-30T15:27:56.955+0000] {subprocess.py:86} INFO - Output:
+[2025-10-30T15:27:56.957+0000] {subprocess.py:93} INFO - ++ pwd
+[2025-10-30T15:27:56.958+0000] {subprocess.py:93} INFO - + echo PWD=/tmp/***tmpk0_b3vwc
+[2025-10-30T15:27:56.960+0000] {subprocess.py:93} INFO - PWD=/tmp/***tmpk0_b3vwc
+[2025-10-30T15:27:56.961+0000] {subprocess.py:93} INFO - + echo AIRFLOW_HOME=/opt/***
+[2025-10-30T15:27:56.961+0000] {subprocess.py:93} INFO - AIRFLOW_HOME=/opt/***
+[2025-10-30T15:27:56.962+0000] {subprocess.py:93} INFO - + python --version
+[2025-10-30T15:27:56.963+0000] {subprocess.py:93} INFO - Python 3.12.6
+[2025-10-30T15:27:56.963+0000] {subprocess.py:93} INFO - + which python
+[2025-10-30T15:27:56.964+0000] {subprocess.py:93} INFO - /usr/local/bin/python
+[2025-10-30T15:27:56.964+0000] {subprocess.py:93} INFO - + ls -lah /opt/***/plugins
+[2025-10-30T15:27:56.973+0000] {subprocess.py:93} INFO - total 16K
+[2025-10-30T15:27:56.974+0000] {subprocess.py:93} INFO - drwxrwxrwx 1 root    root  512 Oct 30 14:29 .
+[2025-10-30T15:27:56.975+0000] {subprocess.py:93} INFO - drwxrwxr-x 1 *** root 4.0K Oct 30 13:10 ..
+[2025-10-30T15:27:56.976+0000] {subprocess.py:93} INFO - -rwxrwxrwx 1 root    root  156 Oct 30 14:39 .env
+[2025-10-30T15:27:56.977+0000] {subprocess.py:93} INFO - -rwxrwxrwx 1 root    root  11K Oct 30 14:58 gather_bike_data.py
+[2025-10-30T15:27:56.978+0000] {subprocess.py:93} INFO - + echo 'DB env:'
+[2025-10-30T15:27:56.979+0000] {subprocess.py:93} INFO - DB env:
+[2025-10-30T15:27:56.979+0000] {subprocess.py:93} INFO - + echo DB_HOST=host.docker.internal
+[2025-10-30T15:27:56.980+0000] {subprocess.py:93} INFO - DB_HOST=host.docker.internal
+[2025-10-30T15:27:56.980+0000] {subprocess.py:93} INFO - + echo DB_PORT=3306
+[2025-10-30T15:27:56.981+0000] {subprocess.py:93} INFO - DB_PORT=3306
+[2025-10-30T15:27:56.981+0000] {subprocess.py:93} INFO - + echo DB_USER=root
+[2025-10-30T15:27:56.982+0000] {subprocess.py:93} INFO - DB_USER=root
+[2025-10-30T15:27:56.982+0000] {subprocess.py:93} INFO - + echo DB_NAME=renfpython
+[2025-10-30T15:27:56.983+0000] {subprocess.py:93} INFO - DB_NAME=renfpython
+[2025-10-30T15:27:56.983+0000] {subprocess.py:93} INFO - + '[' -z x ']'
+[2025-10-30T15:27:56.984+0000] {subprocess.py:93} INFO - + echo 'DB_PWD=<set>'
+[2025-10-30T15:27:56.985+0000] {subprocess.py:93} INFO - DB_PWD=<set>
+[2025-10-30T15:27:56.986+0000] {subprocess.py:93} INFO - + cd /opt/***/plugins
+[2025-10-30T15:27:56.987+0000] {subprocess.py:93} INFO - + python gather_bike_data.py
+[2025-10-30T15:28:07.379+0000] {subprocess.py:93} INFO - Fetching data of Lille's api: 302
+[2025-10-30T15:28:07.380+0000] {subprocess.py:93} INFO - Fetching data of Paris's api: 1495
+[2025-10-30T15:28:07.380+0000] {subprocess.py:93} INFO - 
+[2025-10-30T15:28:07.382+0000] {subprocess.py:93} INFO - 
+[2025-10-30T15:28:07.384+0000] {subprocess.py:93} INFO - ✅ Connected successfully to MySQL!
+[2025-10-30T15:28:07.385+0000] {subprocess.py:93} INFO - ✅ Connected successfully to MySQL!
+[2025-10-30T15:28:07.550+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-10-30T15:28:07.567+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-10-30T15:28:07.568+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=refresh_bike_db, task_id=refresh_bike_db, run_id=manual__2025-10-30T15:27:55.143799+00:00, execution_date=20251030T152755, start_date=20251030T152756, end_date=20251030T152807
+[2025-10-30T15:28:07.597+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-30T15:28:07.622+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-30T15:28:07.627+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

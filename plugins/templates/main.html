@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Bike Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <h1>🚲 Live Bike Map</h1>
+
+    <iframe src="{{ url_for('map_page') }}"></iframe>
+
+    <footer>
+      Données fournies par
+      <a href="https://opendata.paris.fr" target="_blank">OpenData Paris</a> et
+      <a href="https://data.lillemetropole.fr/accueil/" target="_blank"
+        >Lille Metropole</a
+      >.
+    </footer>
+  </body>
+</html>

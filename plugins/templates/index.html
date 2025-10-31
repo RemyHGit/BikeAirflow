@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Station Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <h1>Bienvenue !</h1>
+    <p>
+      Utilisez le formulaire ci-dessous pour trouver la station de vélo la plus
+      proche de votre adresse.
+    </p>
+    <form method="POST" action="{{ url_for('view') }}">
+      <input
+        id="addr"
+        name="addr"
+        placeholder="250 Rue Madeleine Rebérioux, 59000 Lille"
+        required
+      />
+      <input
+        id="nb_stand"
+        name="nb_stand"
+        type="number"
+        step="1"
+        min="0"
+        placeholder="Montrer combien de stations ?"
+      />
+      <button type="submit">Envoyer</button>
+    </form>
+  </body>
+</html>

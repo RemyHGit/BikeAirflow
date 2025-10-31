@@ -1,0 +1,33 @@
+[2025-10-30T15:43:00.469+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-30T15:43:00.496+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: refresh_bike_db.refresh_bike_db scheduled__2025-10-30T15:42:00+00:00 [queued]>
+[2025-10-30T15:43:00.509+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: refresh_bike_db.refresh_bike_db scheduled__2025-10-30T15:42:00+00:00 [queued]>
+[2025-10-30T15:43:00.512+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-10-30T15:43:00.536+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): refresh_bike_db> on 2025-10-30 15:42:00+00:00
+[2025-10-30T15:43:00.552+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=3519) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-10-30T15:43:00.556+0000] {standard_task_runner.py:72} INFO - Started process 3520 to run task
+[2025-10-30T15:43:00.552+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'refresh_bike_db', 'refresh_bike_db', 'scheduled__2025-10-30T15:42:00+00:00', '--job-id', '270', '--raw', '--subdir', 'DAGS_FOLDER/refresh_bike_db.py', '--cfg-path', '/tmp/tmp025h_3jc']
+[2025-10-30T15:43:00.558+0000] {standard_task_runner.py:105} INFO - Job 270: Subtask refresh_bike_db
+[2025-10-30T15:43:00.589+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-10-30T15:43:00.672+0000] {task_command.py:467} INFO - Running <TaskInstance: refresh_bike_db.refresh_bike_db scheduled__2025-10-30T15:42:00+00:00 [running]> on host 8e61f8c083ab
+[2025-10-30T15:43:00.675+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-10-30T15:43:00.818+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='refresh_bike_db' AIRFLOW_CTX_TASK_ID='refresh_bike_db' AIRFLOW_CTX_EXECUTION_DATE='2025-10-30T15:42:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-10-30T15:42:00+00:00'
+[2025-10-30T15:43:00.820+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-10-30T15:43:00.841+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-10-30T15:43:00.843+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python -m pip install -r requirements.txt; python $AIRFLOW_HOME/plugins/gather_bike_data.py']
+[2025-10-30T15:43:00.853+0000] {subprocess.py:86} INFO - Output:
+[2025-10-30T15:43:02.056+0000] {subprocess.py:93} INFO - 
+[2025-10-30T15:43:02.058+0000] {subprocess.py:93} INFO - [notice] A new release of pip is available: 24.2 -> 25.3
+[2025-10-30T15:43:02.063+0000] {subprocess.py:93} INFO - [notice] To update, run: pip install --upgrade pip
+[2025-10-30T15:43:02.064+0000] {subprocess.py:93} INFO - ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'requirements.txt'
+[2025-10-30T15:43:16.222+0000] {subprocess.py:93} INFO - Fetching data of Lille's api: 302
+[2025-10-30T15:43:16.227+0000] {subprocess.py:93} INFO - Fetching data of Paris's api: 1495
+[2025-10-30T15:43:16.231+0000] {subprocess.py:93} INFO - 
+[2025-10-30T15:43:16.232+0000] {subprocess.py:93} INFO - 
+[2025-10-30T15:43:16.233+0000] {subprocess.py:93} INFO - ✅ Connected successfully to MySQL!
+[2025-10-30T15:43:16.236+0000] {subprocess.py:93} INFO - ✅ Connected successfully to MySQL!
+[2025-10-30T15:43:16.548+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-10-30T15:43:16.646+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-10-30T15:43:16.665+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=refresh_bike_db, task_id=refresh_bike_db, run_id=scheduled__2025-10-30T15:42:00+00:00, execution_date=20251030T154200, start_date=20251030T154300, end_date=20251030T154316
+[2025-10-30T15:43:16.753+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-30T15:43:16.837+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-30T15:43:16.850+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

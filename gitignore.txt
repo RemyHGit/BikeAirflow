@@ -20,6 +20,7 @@ parts/
 sdist/
 var/
 wheels/
+airflow.cfg
 share/python-wheels/
 *.egg-info/
 .installed.cfg
@@ -135,7 +136,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .envrc
 .venv
 env/

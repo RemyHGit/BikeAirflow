@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_11c36bcaff5abba8516dfb928c108757 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_11c36bcaff5abba8516dfb928c108757" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_11c36bcaff5abba8516dfb928c108757 = L.map(
+                "map_11c36bcaff5abba8516dfb928c108757",
+                {
+                    center: [50.6267445, 3.0801349],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3bac444e370a48015256651a1a0d2266 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3bac444e370a48015256651a1a0d2266.addTo(map_11c36bcaff5abba8516dfb928c108757);
+        
+    
+            var marker_e7b8955b188b84b5a688b1c2d51745a8 = L.marker(
+                [50.6267445, 3.0801349],
+                {
+}
+            ).addTo(map_11c36bcaff5abba8516dfb928c108757);
+        
+    
+            var icon_be15e3b54d47449c29ad647c4f45f53b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_e7b8955b188b84b5a688b1c2d51745a8.bindTooltip(
+                `<div>
+                     Votre position (Lille)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e7b8955b188b84b5a688b1c2d51745a8.setIcon(icon_be15e3b54d47449c29ad647c4f45f53b);
+            
+    
+            var marker_055f6fda6453ad1217d57c89517c1c97 = L.marker(
+                [50.62651, 3.079211],
+                {
+}
+            ).addTo(map_11c36bcaff5abba8516dfb928c108757);
+        
+    
+            var icon_267949e9fef1ce19cf5d200127529075 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_278ac5f74d0c3dc62921b592a098c901 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0ccd675479f8286ba230c39e90f160b0 = $(`<div id="html_0ccd675479f8286ba230c39e90f160b0" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 4 Places disponibles: Oui Statut: EN SERVICE</div>`)[0];
+                popup_278ac5f74d0c3dc62921b592a098c901.setContent(html_0ccd675479f8286ba230c39e90f160b0);
+            
+        
+
+        marker_055f6fda6453ad1217d57c89517c1c97.bindPopup(popup_278ac5f74d0c3dc62921b592a098c901)
+        ;
+
+        
+    
+    
+            marker_055f6fda6453ad1217d57c89517c1c97.bindTooltip(
+                `<div>
+                     BOIS HABITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_055f6fda6453ad1217d57c89517c1c97.setIcon(icon_267949e9fef1ce19cf5d200127529075);
+            
+    
+            var marker_758fa1890728082b866b0f4a95697b01 = L.marker(
+                [50.62479, 3.080467],
+                {
+}
+            ).addTo(map_11c36bcaff5abba8516dfb928c108757);
+        
+    
+            var icon_3ea9069c97f4090cd00f8bc7042569bd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_226ebfd1af2a7706c34acc5795e8707a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d1dc86368c52258e23af6badf88f9535 = $(`<div id="html_d1dc86368c52258e23af6badf88f9535" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 15 Places disponibles: Oui Statut: EN SERVICE</div>`)[0];
+                popup_226ebfd1af2a7706c34acc5795e8707a.setContent(html_d1dc86368c52258e23af6badf88f9535);
+            
+        
+
+        marker_758fa1890728082b866b0f4a95697b01.bindPopup(popup_226ebfd1af2a7706c34acc5795e8707a)
+        ;
+
+        
+    
+    
+            marker_758fa1890728082b866b0f4a95697b01.bindTooltip(
+                `<div>
+                     AUBERGE DE JEUNESSE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_758fa1890728082b866b0f4a95697b01.setIcon(icon_3ea9069c97f4090cd00f8bc7042569bd);
+            
+    
+            var marker_1983a2708181385495ffefa5df4b4d85 = L.marker(
+                [50.629738, 3.078224],
+                {
+}
+            ).addTo(map_11c36bcaff5abba8516dfb928c108757);
+        
+    
+            var icon_70ed8413fc19cf634cea95ebfa7af0c4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_18ca8619f53dc30892a43e334f2000f0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_31c46b865e6b79114156109c4839231f = $(`<div id="html_31c46b865e6b79114156109c4839231f" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 16 Places disponibles: Oui Statut: EN SERVICE</div>`)[0];
+                popup_18ca8619f53dc30892a43e334f2000f0.setContent(html_31c46b865e6b79114156109c4839231f);
+            
+        
+
+        marker_1983a2708181385495ffefa5df4b4d85.bindPopup(popup_18ca8619f53dc30892a43e334f2000f0)
+        ;
+
+        
+    
+    
+            marker_1983a2708181385495ffefa5df4b4d85.bindTooltip(
+                `<div>
+                     HOTEL DE REGION
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1983a2708181385495ffefa5df4b4d85.setIcon(icon_70ed8413fc19cf634cea95ebfa7af0c4);
+            
+    
+            var marker_35516641f1830931407807e4458d3020 = L.marker(
+                [50.629246, 3.075218],
+                {
+}
+            ).addTo(map_11c36bcaff5abba8516dfb928c108757);
+        
+    
+            var icon_4680800cce8eefb1748e758a2f953af2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1c224252380d33a37c8a8b322c072c7c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ac5e6a4d6b8c0ad77f0b7c0e6a65f3bb = $(`<div id="html_ac5e6a4d6b8c0ad77f0b7c0e6a65f3bb" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 8 Places disponibles: Oui Statut: EN SERVICE</div>`)[0];
+                popup_1c224252380d33a37c8a8b322c072c7c.setContent(html_ac5e6a4d6b8c0ad77f0b7c0e6a65f3bb);
+            
+        
+
+        marker_35516641f1830931407807e4458d3020.bindPopup(popup_1c224252380d33a37c8a8b322c072c7c)
+        ;
+
+        
+    
+    
+            marker_35516641f1830931407807e4458d3020.bindTooltip(
+                `<div>
+                     LILLE GRAND PALAIS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_35516641f1830931407807e4458d3020.setIcon(icon_4680800cce8eefb1748e758a2f953af2);
+            
+    
+            var marker_e5cd7ae7f6a1953bf9df7b738bc85bb5 = L.marker(
+                [50.622223, 3.077127],
+                {
+}
+            ).addTo(map_11c36bcaff5abba8516dfb928c108757);
+        
+    
+            var icon_54327fe1b3a94821a3a7413b31702782 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2a4913b23577ac72967e1647c20b6ee3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c866a6baa50f1a020223e975bfc684ed = $(`<div id="html_c866a6baa50f1a020223e975bfc684ed" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 0 Places disponibles: Oui Statut: RÉFORMÉ</div>`)[0];
+                popup_2a4913b23577ac72967e1647c20b6ee3.setContent(html_c866a6baa50f1a020223e975bfc684ed);
+            
+        
+
+        marker_e5cd7ae7f6a1953bf9df7b738bc85bb5.bindPopup(popup_2a4913b23577ac72967e1647c20b6ee3)
+        ;
+
+        
+    
+    
+            marker_e5cd7ae7f6a1953bf9df7b738bc85bb5.bindTooltip(
+                `<div>
+                     BELFORT
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e5cd7ae7f6a1953bf9df7b738bc85bb5.setIcon(icon_54327fe1b3a94821a3a7413b31702782);
+            
+    
+            var marker_61b2fe231f65157c7a77070889f1d22b = L.marker(
+                [50.628918, 3.088147],
+                {
+}
+            ).addTo(map_11c36bcaff5abba8516dfb928c108757);
+        
+    
+            var icon_030d8e2b2334e430756de5ba6040139e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ebdcbec9238987e74abf21f4a607f8a5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dc99a42bf634e168da572d9803af9a1e = $(`<div id="html_dc99a42bf634e168da572d9803af9a1e" style="width: 100.0%; height: 100.0%;">Vélos disponibles: 9 Places disponibles: Oui Statut: EN SERVICE</div>`)[0];
+                popup_ebdcbec9238987e74abf21f4a607f8a5.setContent(html_dc99a42bf634e168da572d9803af9a1e);
+            
+        
+
+        marker_61b2fe231f65157c7a77070889f1d22b.bindPopup(popup_ebdcbec9238987e74abf21f4a607f8a5)
+        ;
+
+        
+    
+    
+            marker_61b2fe231f65157c7a77070889f1d22b.bindTooltip(
+                `<div>
+                     STADE BALLET
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_61b2fe231f65157c7a77070889f1d22b.setIcon(icon_030d8e2b2334e430756de5ba6040139e);
+            
+</script>
+</html>

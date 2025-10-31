@@ -1,0 +1,102 @@
+[2025-10-31T08:07:52.455+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-31T08:07:52.531+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: refresh_bike_db.refresh_bike_db manual__2025-10-31T08:07:51.617930+00:00 [queued]>
+[2025-10-31T08:07:52.593+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: refresh_bike_db.refresh_bike_db manual__2025-10-31T08:07:51.617930+00:00 [queued]>
+[2025-10-31T08:07:52.594+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-10-31T08:07:52.640+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): refresh_bike_db> on 2025-10-31 08:07:51.617930+00:00
+[2025-10-31T08:07:52.663+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'refresh_bike_db', 'refresh_bike_db', 'manual__2025-10-31T08:07:51.617930+00:00', '--job-id', '295', '--raw', '--subdir', 'DAGS_FOLDER/refresh_bike_db.py', '--cfg-path', '/tmp/tmp63qg1iok']
+[2025-10-31T08:07:52.658+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=4586) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-10-31T08:07:52.670+0000] {standard_task_runner.py:105} INFO - Job 295: Subtask refresh_bike_db
+[2025-10-31T08:07:52.671+0000] {standard_task_runner.py:72} INFO - Started process 4590 to run task
+[2025-10-31T08:07:52.707+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-10-31T08:07:52.806+0000] {task_command.py:467} INFO - Running <TaskInstance: refresh_bike_db.refresh_bike_db manual__2025-10-31T08:07:51.617930+00:00 [running]> on host 8e61f8c083ab
+[2025-10-31T08:07:53.023+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='refresh_bike_db' AIRFLOW_CTX_TASK_ID='refresh_bike_db' AIRFLOW_CTX_EXECUTION_DATE='2025-10-31T08:07:51.617930+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-31T08:07:51.617930+00:00'
+[2025-10-31T08:07:53.026+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-10-31T08:07:53.057+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-10-31T08:07:53.060+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python -m pip install -r requirements.txt; python $AIRFLOW_HOME/plugins/gather_bike_data.py; python $AIRFLOW_HOME/plugins/app_flask.py']
+[2025-10-31T08:07:53.077+0000] {subprocess.py:86} INFO - Output:
+[2025-10-31T08:07:54.842+0000] {subprocess.py:93} INFO - 
+[2025-10-31T08:07:54.845+0000] {subprocess.py:93} INFO - [notice] A new release of pip is available: 24.2 -> 25.3
+[2025-10-31T08:07:54.846+0000] {subprocess.py:93} INFO - [notice] To update, run: pip install --upgrade pip
+[2025-10-31T08:07:54.846+0000] {subprocess.py:93} INFO - ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'requirements.txt'
+[2025-10-31T08:08:06.090+0000] {subprocess.py:93} INFO - Fetching data of Lille's api: 302
+[2025-10-31T08:08:06.091+0000] {subprocess.py:93} INFO - Fetching data of Paris's api: 1495
+[2025-10-31T08:08:06.092+0000] {subprocess.py:93} INFO - 
+[2025-10-31T08:08:06.092+0000] {subprocess.py:93} INFO - 
+[2025-10-31T08:08:06.093+0000] {subprocess.py:93} INFO - ✅ Connected successfully to MySQL!
+[2025-10-31T08:08:06.093+0000] {subprocess.py:93} INFO - ✅ Connected successfully to MySQL!
+[2025-10-31T08:08:08.130+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-10-31T08:08:08.130+0000] {subprocess.py:93} INFO -   File "/opt/***/plugins/app_flask.py", line 5, in <module>
+[2025-10-31T08:08:08.134+0000] {subprocess.py:93} INFO -     import folium
+[2025-10-31T08:08:08.135+0000] {subprocess.py:93} INFO - ModuleNotFoundError: No module named 'folium'
+[2025-10-31T08:08:08.370+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-10-31T08:08:08.391+0000] {taskinstance.py:3310} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-10-31T08:08:08.417+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=refresh_bike_db, task_id=refresh_bike_db, run_id=manual__2025-10-31T08:07:51.617930+00:00, execution_date=20251031T080751, start_date=20251031T080752, end_date=20251031T080808
+[2025-10-31T08:08:08.450+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-10-31T08:08:08.456+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 295 for task refresh_bike_db (Bash command failed. The command returned a non-zero exit code 1.; 4590)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3004, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-10-31T08:08:08.508+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-10-31T08:08:08.536+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-31T08:08:08.541+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

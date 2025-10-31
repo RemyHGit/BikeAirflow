@@ -7,11 +7,11 @@ import os
 import pymysql
 import getpass
 
-DB_USER = os.getenv("DB_USER", "root")
-DB_PWD  = os.getenv("DB_PWD")  # will be asked if None
-DB_NAME = os.getenv("DB_NAME", "renfpython")
-DB_HOST = os.getenv("DB_HOST", "host.docker.internal")
-DB_PORT = int(os.getenv("DB_PORT", "3306"))
+DB_USER = os.getenv("DB_USER")
+DB_PWD  = os.getenv("DB_PWD")
+DB_NAME = os.getenv("DB_NAME")
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = int(os.getenv("DB_PORT"))
 
 def connexion():
     user = DB_USER

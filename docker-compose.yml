@@ -16,12 +16,25 @@ services:
     container_name: airflow_init
     depends_on:
       - postgres
-    environment:
+    environment:  
+      DB_HOST: ${DB_HOST}
+      DB_PORT: "${DB_PORT}"
+      DB_USER: ${DB_USER}
+      DB_PWD: ${DB_PWD}
+      DB_NAME: ${DB_NAME}
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
-      _PIP_ADDITIONAL_REQUIREMENTS: "pandas requests mysqlclient"
+      # Utiliser la nouvelle section [database]
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+    volumes:
+      # Monte ton dossier qui contient requirements.txt, dags, etc.
+      - C:\Users\remyh\Documents\COURS\nexa\renf python\docker:/opt/airflow
     entrypoint: /bin/bash
-    command: -c "airflow db init && airflow users create -u admin -p admin -r Admin -e admin@example.com -f Admin -l User"
+    command: -c "
+      pip install --no-cache-dir \
+        --constraint https://raw.githubusercontent.com/apache/airflow/constraints-2.10.2/constraints-3.12.txt \
+        -r /opt/airflow/requirements.txt && \
+      airflow db migrate && \
+      airflow users create -u admin -p admin -r Admin -e admin@example.com -f Admin -l User"
 
   airflow-webserver:
     image: apache/airflow:2.10.2
@@ -30,34 +43,78 @@ services:
       - airflow-init
       - postgres
     environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: "${DB_PORT}"
+      DB_USER: ${DB_USER}
+      DB_PWD: ${DB_PWD}
+      DB_NAME: ${DB_NAME}
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
       AIRFLOW__WEBSERVER__RBAC: "True"
       AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "True"
-      _PIP_ADDITIONAL_REQUIREMENTS: "pandas requests mysqlclient"
     volumes:
       - C:\Users\remyh\Documents\COURS\nexa\renf python\docker/dags:/opt/airflow/dags
       - C:\Users\remyh\Documents\COURS\nexa\renf python\docker/logs:/opt/airflow/logs
       - C:\Users\remyh\Documents\COURS\nexa\renf python\docker/plugins:/opt/airflow/plugins
+      - C:\Users\remyh\Documents\COURS\nexa\renf python\docker:/opt/airflow_root
     ports:
       - "8080:8080"
-    command: webserver
+    entrypoint: /bin/bash
+    command: -c "
+      pip install --no-cache-dir \
+        --constraint https://raw.githubusercontent.com/apache/airflow/constraints-2.10.2/constraints-3.12.txt \
+        -r /opt/airflow_root/requirements.txt && \
+      exec airflow webserver"
 
   airflow-scheduler:
+    environment:  
+      DB_HOST: ${DB_HOST}
+      DB_PORT: "${DB_PORT}"
+      DB_USER: ${DB_USER}
+      DB_PWD: ${DB_PWD}
+      DB_NAME: ${DB_NAME}
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
     image: apache/airflow:2.10.2
     container_name: airflow_scheduler
     depends_on:
       - airflow-webserver
       - postgres
-    environment:
-      AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
-      _PIP_ADDITIONAL_REQUIREMENTS: "pandas requests mysqlclient"
     volumes:
       - C:\Users\remyh\Documents\COURS\nexa\renf python\docker/dags:/opt/airflow/dags
       - C:\Users\remyh\Documents\COURS\nexa\renf python\docker/logs:/opt/airflow/logs
       - C:\Users\remyh\Documents\COURS\nexa\renf python\docker/plugins:/opt/airflow/plugins
-    command: scheduler
+      - C:\Users\remyh\Documents\COURS\nexa\renf python\docker:/opt/airflow_root
+    entrypoint: /bin/bash
+    command: -c "
+      pip install --no-cache-dir \
+        --constraint https://raw.githubusercontent.com/apache/airflow/constraints-2.10.2/constraints-3.12.txt \
+        -r /opt/airflow_root/requirements.txt && \
+      exec airflow scheduler"
+
+  flask-bike:
+    environment:  
+      DB_HOST: ${DB_HOST}
+      DB_PORT: "${DB_PORT}"
+      DB_USER: ${DB_USER}
+      DB_PWD: ${DB_PWD}
+      DB_NAME: ${DB_NAME}
+    image: apache/airflow:2.10.2
+    container_name: flask_bike
+    depends_on:
+      - postgres
+    working_dir: /opt/airflow/plugins
+    volumes:
+      - C:\Users\remyh\Documents\COURS\nexa\renf python\docker/plugins:/opt/airflow/plugins
+      - C:\Users\remyh\Documents\COURS\nexa\renf python\docker:/opt/airflow_root   # <— add this
+    ports:
+      - "5000:5000"
+    command: ["bash","-lc", "\
+      pip install --no-cache-dir \
+        --constraint https://raw.githubusercontent.com/apache/airflow/constraints-2.10.2/constraints-3.12.txt \
+        -r /opt/airflow_root/requirements.txt && \
+      exec gunicorn -b 0.0.0.0:5000 app_flask:app --workers 1 --timeout 90 "]
+
 
 volumes:
   postgres_db:
